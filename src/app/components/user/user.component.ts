@@ -15,10 +15,6 @@ export class UserComponent implements OnInit {
   hello: any;
 
   constructor() {
-
-  }
-
-  ngOnInit() {
     this.name += ' John Coltrane';
     this.age = 40;
     this.email = 'JohnColtrane@Jazz.com';
@@ -29,7 +25,9 @@ export class UserComponent implements OnInit {
     zip: 19121 };
 
     this.hobbies = ['Java', 'C', 'NodeJS'];
+  }
 
+  ngOnInit() {
     this.onClick();
   }
 
@@ -37,6 +35,21 @@ export class UserComponent implements OnInit {
     this.name = 'Wave Labs'
     this.hobbies.push('New item');
     console.log(' Button clicked ');
+  }
+
+  addHobby(hobby) {
+     // this.hobbies.unshift(hobby); // addFirst
+       this.hobbies.push(hobby); // addLast
+    return false;
+  }
+
+  deleteHobby(hobby) {
+   const h = this.hobbies;
+   for ( let i = 0; i < h.length; i++) {
+     if (h[i] === hobby) {
+       h.splice(i, 1);
+     }
+   }
   }
 }
 
